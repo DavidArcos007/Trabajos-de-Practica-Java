@@ -1,0 +1,13 @@
+com\mycompany\patronbuilder\BuilderComida.class
+com\mycompany\patronbuilder\Botella.class
+com\mycompany\patronbuilder\Gaseosa.class
+com\mycompany\patronbuilder\BebidaFria.class
+com\mycompany\patronbuilder\Comida.class
+com\mycompany\patronbuilder\IItem.class
+com\mycompany\patronbuilder\Agua.class
+com\mycompany\patronbuilder\IEmbalaje.class
+com\mycompany\patronbuilder\DemoBuilder.class
+com\mycompany\patronbuilder\HamburguesaPollo.class
+com\mycompany\patronbuilder\Empaque.class
+com\mycompany\patronbuilder\Hamburguesa.class
+com\mycompany\patronbuilder\HamburguesaVeg.class

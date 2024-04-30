@@ -1,0 +1,7 @@
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\impl\ConexionPostgreSQL.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\factory\ConexionFabrica.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\interfaz\IConexion.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\impl\ConexionMySQL.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\factory\DemoFabrica.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\impl\ConexionVacia.java
+D:\Documents\Mateo\UTA\Quinto Semestre\Patrones de Software\Primer Parcial\Proyectos\patronFabrica\src\main\java\com\mateo\impl\ConexionOracle.java

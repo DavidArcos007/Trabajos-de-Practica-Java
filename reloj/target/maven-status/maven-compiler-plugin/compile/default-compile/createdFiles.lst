@@ -1,0 +1,9 @@
+Recibo\Factura.class
+Recibo\IPlan.class
+com\arcos\reloj\Reloj.class
+com\arcos\reloj\DemoSingletonReloj.class
+Recibo\PlanInstitucional.class
+Recibo\demoFactura.class
+Recibo\PlanComercial.class
+Recibo\GetPlanFactory.class
+Recibo\PlanDomestico.class

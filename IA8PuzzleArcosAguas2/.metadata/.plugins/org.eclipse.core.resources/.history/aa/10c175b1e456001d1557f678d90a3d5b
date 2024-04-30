@@ -1,0 +1,126 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ia8puzzlearcosaguas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author David
+ */
+public class Estado {
+ public int[][] estado_actual;
+    public int valor_hn;
+
+    public Estado(int[][] estado_actual) {
+        this.estado_actual = estado_actual;
+    }
+
+    public int carlcular_hn() {
+        this.valor_hn = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (this.estado_actual[i][j] != Variables.ESTADO_OBJETIVO[i][j]) {
+                    this.valor_hn++;
+                }
+            }
+        }
+        return this.valor_hn;
+    }
+
+    public int[][] copiar_matriz() {
+        int[][] copia_matriz = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                copia_matriz[i][j] = this.estado_actual[i][j];
+            }
+        }
+        return copia_matriz;
+    }
+
+    List<Estado> generar_estados(){
+        List<Estado> listaEstados = new ArrayList<>();
+        int [] posicionVacia = obtener_posicion_espacio_en_blanco(0);
+        mover_arriba(posicionVacia, listaEstados);
+        mover_abajo(posicionVacia, listaEstados);
+        mover_izquierda(posicionVacia, listaEstados);
+        mover_derecha(posicionVacia, listaEstados);
+        return listaEstados;
+    }
+
+    public void imprimir_estado() {
+        for (int i = 0; i < 3; i++) {
+            System.out.print("|  ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(this.estado_actual[i][j]);
+                if (j != estado_actual[i].length - 1) {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println("  |");
+        }
+    }
+
+    public int[] obtener_posicion_espacio_en_blanco(int posicionVacia) {
+        int posicion[] = new int[2];
+        for (int i = 0; i < this.estado_actual.length; i++) {
+            for (int j = 0; j < this.estado_actual[i].length; j++) {
+                if (estado_actual[i][j] == posicionVacia) {
+                    posicion[0] = i;
+                    posicion[1] = j;
+                    return posicion;
+                }
+            }
+        }
+        return posicion;
+    }
+
+    void mover_arriba(int[] posicionVacia, List<Estado> listaEstados) {
+        int i = posicionVacia[0];
+        int j = posicionVacia[1];
+        if (i > 0) {
+            int aux[][] = copiar_matriz();
+            aux[i][j] = aux[i - 1][j];
+            aux[i - 1][j] = 0;
+            listaEstados.add(new Estado(aux));
+        }
+    }
+
+    void mover_abajo(int[] posicionVacia, List<Estado> listaEstados) {
+        int i = posicionVacia[0];
+        int j = posicionVacia[1];
+        if (i < this.estado_actual.length - 1) {
+            int aux[][] = copiar_matriz();
+            aux[i][j] = aux[i + 1][j];
+            aux[i + 1][j] = 0;
+            listaEstados.add(new Estado(aux));
+        }
+    }
+
+    void mover_izquierda(int[] posicionVacia, List<Estado> listaEstados) {
+        int i = posicionVacia[0];
+        int j = posicionVacia[1];
+        if (j > 0) {
+            int aux[][] = copiar_matriz();
+            aux[i][j] = aux[i][j - 1];
+            aux[i][j - 1] = 0;
+            listaEstados.add(new Estado(aux));
+        }
+    }
+
+    void mover_derecha(int[] posicionVacia, List<Estado> listaEstados) {
+        int i = posicionVacia[0];
+        int j = posicionVacia[1];
+        if (j < this.estado_actual.length - 1) {
+            int aux[][] = copiar_matriz();
+
+            aux[i][j] = aux[i][j + 1];
+            aux[i][j + 1] = 0;
+            listaEstados.add(new Estado(aux));
+        }
+    }
+}

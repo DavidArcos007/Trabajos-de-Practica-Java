@@ -1,0 +1,109 @@
+package ia8puzzlearcosaguas;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Clase Nodo donde se establece el comportamiento de los mismos, además de las
+ * distintas funciones en A* y las ramas del árbol
+ * @author David y Christian
+ */
+public class Nodo {
+
+	Nodo padre;
+	List<Nodo> hijos = new ArrayList();
+	Estado estado;
+	boolean raiz;
+
+	public int valor_hn;
+	public int valor_gn;
+	public int valor_fn;
+	public int rama;
+
+	/**
+	 * Constructor de la Clase Nodo
+	 * 
+	 * @param estado: representa los diferentes estados de los nodos en función del
+	 *                problema
+	 * @param padre:  nodo padre según el caso analizado
+	 * @param raiz:   determina si es nodo raíz o no.
+	 */
+	public Nodo(Estado estado, Nodo padre, boolean raiz) {
+		this.padre = padre;
+		this.estado = estado;
+		this.valor_gn = padre == null ? 0 : this.padre.valor_gn + 1;
+		this.valor_hn = this.estado.carlcular_hn();
+		this.valor_fn = this.valor_gn + this.valor_hn;
+		this.raiz = raiz;
+	}
+
+	/**
+	 * Función booleana para determinar si el estado analizado es el estado objetivo
+	 * 
+	 * @return Devuelve si el estado actual corresponde con el estado objetivo.
+	 */
+	public boolean es_funcion_objetivo() {
+		return Arrays.deepEquals(this.estado.estado_actual, Variables.ESTADO_OBJETIVO);
+	}
+
+	/**
+	 * Agregación de hijos al nodo padre analizado
+	 * @param hijo: nodo naciente a partir del padre analizado
+	 */
+	public void agregar_hijo(Nodo hijo) {
+		this.hijos.add(hijo);
+	}
+
+	/**
+	 * Agregación de hojas en la lista según el análisis realizado
+	 * @param hoja: nodos que en momento de análisis no tienen descendencia
+	 */
+	public void agregar_hoja(Nodo hoja) {
+		Variables.HOJAS.add(hoja);
+	}
+
+	/**
+	 * Expansión de los nodos a través de nodos hijos.
+	 */
+	public void expandir_nodos() {
+		List<Estado> estados = this.estado.generar_estados();
+		for (int i = 0; i < estados.size(); i++) {
+			Nodo aux = new Nodo(estados.get(i), this, false);
+			aux.rama = i + 1;
+			this.agregar_hijo(aux);
+			this.agregar_hoja(aux);
+		}
+		if (!this.raiz) {
+			Variables.HOJAS.remove(this);
+		}
+	}
+
+	/**
+	 * Redefinición de toString para impresión de las funciones (heurística, costo acumulado y costo más barato) 
+	 * y las rama correspondiente al análisis.
+	 */
+	@Override
+	public String toString() {
+		return "Nodo{" + ", valor_hn=" + valor_hn + ", valor_gn=" + valor_gn + ", valor_fn=" + valor_fn + ", rama="
+				+ rama + '}';
+	}
+
+	/**
+	 * Busca el nodo hoja con menor función de costo f(n)
+	 * @return devuelve el nodo hoja con menor f(n)
+	 */
+	public static Nodo nodo_hoja_menor() {
+		Nodo hoja_menor = null;
+		for (int i = 0; i < Variables.HOJAS.size(); i++) {
+			if (hoja_menor == null) {
+				hoja_menor = Variables.HOJAS.get(0);
+			}
+			if (hoja_menor.valor_fn > Variables.HOJAS.get(i).valor_fn) {
+				hoja_menor = Variables.HOJAS.get(i);
+			}
+		}
+		return hoja_menor;
+	}
+
+}

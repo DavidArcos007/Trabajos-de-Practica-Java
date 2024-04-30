@@ -1,0 +1,7 @@
+com\arcos\patronadaptador\ReproductorVlc.class
+com\arcos\patronadaptador\ReproductorAudio.class
+com\arcos\patronadaptador\AdaptadorReproductor.class
+com\arcos\patronadaptador\IReptroductorMultimediaAvanzado.class
+com\arcos\patronadaptador\DemoAdaptador.class
+com\arcos\patronadaptador\IReproductorMultimedia.class
+com\arcos\patronadaptador\ReproductorMp4.class

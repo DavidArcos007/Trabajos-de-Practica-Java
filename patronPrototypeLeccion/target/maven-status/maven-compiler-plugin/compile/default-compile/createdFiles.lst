@@ -1,0 +1,5 @@
+com\arcos\patronprototypeleccion\CAdminPrototype.class
+com\arcos\patronprototypeleccion\CRectangulo.class
+com\arcos\patronprototypeleccion\CCuadrado.class
+com\arcos\patronprototypeleccion\IPrototipo.class
+com\arcos\patronprototypeleccion\demoPatronPrototypeLeccion.class

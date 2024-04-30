@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ia8puzzlearcosaguas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author David
+ */
+public class AEstrella {
+    
+public Nodo crear_arbol(Nodo nodo) {
+        if (nodo.es_funcion_objetivo()) {
+            System.out.println("Esta resuelto");
+        } else {
+            while (!nodo.es_funcion_objetivo()) {
+                if (nodo.raiz) {
+                    System.out.println("Padre");
+                    nodo.estado.imprimir_estado();
+                    System.out.println(nodo);
+                    nodo.expandir_nodos();
+                    //Impresion nodos hijos
+                    for (int i = 0; i < nodo.hijos.size(); i++) {
+                        nodo.hijos.get(i).estado.imprimir_estado();
+                        System.out.println(nodo.hijos.get(i));
+                        System.out.println("----------------------");
+                    }
+                    nodo = Nodo.nodo_hoja_menor();
+                    System.out.println("\nHoja menor seleccionada");
+                    nodo.estado.imprimir_estado();
+                    System.out.println(nodo);
+                } else {
+                    System.out.println("Padre");
+                    nodo.estado.imprimir_estado();
+                    System.out.println(nodo);
+                    nodo.expandir_nodos();
+                    nodo = Nodo.nodo_hoja_menor();
+                    System.out.println("\nHoja menor seleccionada");
+                    nodo.estado.imprimir_estado();
+                    System.out.println(nodo);
+                }
+                //Numero de nodos que se expanden
+                //System.out.println("--------------------- "+Variables.HOJAS.size());
+            }
+            
+        }
+        return nodo;
+    }
+
+    public static List<Nodo> obtener_camino_solucion(Nodo hojaSolucion) {
+        List<Nodo> caminoSolucion = new ArrayList();
+        do {
+            caminoSolucion.add(hojaSolucion);
+            hojaSolucion = hojaSolucion.padre;
+        } while (hojaSolucion != null);
+
+        return caminoSolucion;
+    }
+
+    public static void imprimir_camino_solucion(List<Nodo> caminoSolucion) {
+        System.out.println("\n***************Camino Solucion*****************");
+        for (int i = caminoSolucion.size() - 1; i >= 0; i--) {
+            System.out.println(caminoSolucion.get(i));
+            caminoSolucion.get(i).estado.imprimir_estado();
+            System.out.println("----------------------------");
+        }
+    }
+
+}

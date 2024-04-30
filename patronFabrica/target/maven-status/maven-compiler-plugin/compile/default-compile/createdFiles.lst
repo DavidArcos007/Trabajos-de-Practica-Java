@@ -1,0 +1,7 @@
+com\arcos\factory\DemoFabrica.class
+com\arcos\factory\ConexionFabrica.class
+com\arcos\impl\ConexionMySQL.class
+com\arcos\inter\IConexion.class
+com\arcos\impl\ConexionOracle.class
+com\arcos\impl\ConexionPostgreSQL.class
+com\arcos\impl\ConexionVacia.class

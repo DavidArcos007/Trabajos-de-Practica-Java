@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\aguas\Documentos\Universidad\ING SOFTWARE\Semestres\7mo y 8vo Octubre 2022-Marzo 2023\IA\IA-Tareas\IA8PuzzleArcosAguas\.metadata\.plugins\org.eclipse.jdt.core
+3897329651.index
+1865797976.index
+2664672791.index
